@@ -21,13 +21,13 @@
 #3. Spiral 
 #4. Big Bang, and so on.
 
-Continuous Integration:
+##Continuous Integration:
   Code, Fetch, Build, Test, Notify, Feedback - it is a cyclic Process.
   The goal is to detect errors at an early stage so that they do not multiply. This helps fix it faster.
   IDE is integrated with version control to store and version the code.
   The Artifacts generated in this process are stored in software repositories for deployment and further testing.
 
-Continuous Deployment:
+##Continuous Deployment:
   Includes Server provisioning, dependencies, conf changes, network, artifact deploys, and so on.
   Decreases a lot of manual intervention and automates all the processes.
   
