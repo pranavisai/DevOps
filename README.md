@@ -6,7 +6,7 @@
 3. Git Bash
 4. Vagrant
 5. Brew (Since I am working on MacOS)
-6. Java - JDK8
+6. Java - JDK11
 7. Maven
 8. IntelliJ
 9. Sublime text editor
