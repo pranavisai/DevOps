@@ -11,4 +11,3 @@
 8. IntelliJ
 9. Sublime text editor
 10. AWS CLI
-11. 
