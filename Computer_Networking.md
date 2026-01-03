@@ -38,3 +38,12 @@
     8. arp -> to view or add the content to the ARP table. A kernel maintains a table of all IP addresses or names and the mapping Mac address.
     9. mtr -> Same as tracert, but live. If the packet loss is frequent, we can run this command to check.
     10. telnet <ip-addr or host-name> -> to check if a particular port is open on the target machine or not.
+11. | Protocol | Port Number (standard) | 
+    | --- | --- |
+    |HTTP | 80 |
+    |HTTPS | 443 |
+    |DNS | 53 |
+    |NFS | 2049 |
+    |SSH | 22 | 
+    |SMTP | 25 |
+    |MySQL | 3306 |
