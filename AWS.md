@@ -1,3 +1,5 @@
+## EC2 Instance
+
 1. EC2 -> Elastic Compute Cloud.
    1. EC2 provides Web services API for managing and provisioning virtual machines inside Amazon Cloud or Amazon's data centers.
    2. Ease in scaling up (from 8GB to 16GB) or down (from 8Gb to 4GB).
@@ -14,4 +16,32 @@
      4. Tags -> Simple label consisting of a customer-defined key and an optional value that makes it easier to manage, search for, and filter resources.
      5. Security Group -> Acts as a virtual firewall that controls the traffic for one or more instances.
      6. Key-Pair -> To log in to EC2 instances.
-     7. 
+2. Right approach to create EC2 instances:
+   1. Requirements gathering.
+   2. Key pairs.
+   3. Security group (firewall).
+   4. Launch instance.
+  
+## AWS CLI (Command Line Interface)
+1. Install on Mac: brew install awscli
+2. Create an access key for the user through IAM.
+3. The Key Pair will be downloaded.
+4. In the command line:
+   1. aws configure -> provide all the details.
+   2. cat ~/.aws/config -> to check configuration.
+   3. cat ~/.aws/credentials -> to check the key pair.
+   4. aws sts get-caller-identity -> if the output returned is correct, proceed; else aws configure again.
+   5. aws ec2 describe-instances -> to describe instances within the region.
+  
+## Elastic Block Store (EBS)
+1. Block based storage.
+2. Runs ec2 OS (root volume data), stores data from db, file data, etc.
+3. While creating volume the availability zone (AZ) should be mentioned. The EC2 instance should be in the same AZ as the EBS volume.
+4. Automatically replicated within the AZ to protect from failure.
+5. A snapshot is backup of a volume.
+6. EBS Types:
+   1. General purpose (SSD): Most work loads.
+   2. Provisioned IOPS: Larger volume than SSD and high input output per second. Used for large databases.
+   3. Throughput Optimized HD: Big data and Data Warehouses.
+   4. Cold HDD: For file servers. Low cost.
+   5. Magnetic: Used for backups and archives. Very cheap.
