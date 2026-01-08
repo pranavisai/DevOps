@@ -45,3 +45,18 @@
    3. Throughput Optimized HD: Big data and Data Warehouses.
    4. Cold HDD: For file servers. Low cost.
    5. Magnetic: Used for backups and archives. Very cheap.
+
+
+## AWS Elastic Load Balancers (ELB)
+1. A load balancer takes the request from the user on a specific port number, like 80 or 443, and forwards the request to the web server, distributing this traffic.
+2. Acts as a single endpoint on which the user can access.
+3. It will have an endpoint on which the user will access a frontend port. And when it receives this request, it is going to route to a backend port, which will be the port number of the server.
+4. AWS provides Elastic Load Balancers.
+5. Different types of load balancers in AWS are: Application load balancer, network load balancer, gateway load balancer, and classic load balancers.
+6. Classic: Takes requests on the frontend port and routes to the backend server port. Ideal for a simple solution. Works on OSI layer 4 (Meaning it doesn't understand the URL, it understands the IP address and the port number (frontend and backend)).
+7. Application: For http and https traffic. Works on OSI layer 7 (meaning it understands URL and routes based on URL). Used the most on AWS for HTTP and https traffic. It is intelligent routing.
+8. Network: Provides a static IP address. Can handle millions of requests per second. Very expensive. Works on OSI layer 4. Sometimes, put in front of the application load balancer.
+9. Gateway: Works on the OSI layer 3. Used to run and manage firewalls and intrusion detection systems.
+
+
+11. 
