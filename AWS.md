@@ -59,4 +59,10 @@
 9. Gateway: Works on the OSI layer 3. Used to run and manage firewalls and intrusion detection systems.
 
 
-11. 
+## CloudWatch
+1. Primary function is to monitor the performance of the AWS environment.
+2. It automatically provides standard metrics for monitoring each service. Custom metrics of choice can also be set up (like alarms, notifications).
+3. Captures events that provide real time stream of events happening.
+4. Provides logs. EC2 does not have direct logs, and hence an agent can be set up that streams logs to the CloudWatch service.
+5. Alarms monitor CloudWatch metrics for instances. In case of threshold spikes, Amazon SNS (Simple Notification Service) sends these warnings as messages to subscribing endpoints or clients.
+6. SNS: is a web service that coordinates and manages the delivery of messages.
