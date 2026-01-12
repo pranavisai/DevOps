@@ -66,3 +66,8 @@
 4. Provides logs. EC2 does not have direct logs, and hence an agent can be set up that streams logs to the CloudWatch service.
 5. Alarms monitor CloudWatch metrics for instances. In case of threshold spikes, Amazon SNS (Simple Notification Service) sends these warnings as messages to subscribing endpoints or clients.
 6. SNS: is a web service that coordinates and manages the delivery of messages.
+
+
+## Elastic File System (EFS)
+1. It is a shared file system hosted on cloud.
+2. Access Points -> Connect EFS to the file system.
