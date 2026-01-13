@@ -77,3 +77,31 @@
 2. Alarm monitors CloudWatch metrics for Instances.
 3. A launch configuration/Template is an instance configuration template that an Auto Scaling group uses to launch EC2 instances.
 4. Scaling policy is used to add or remove instances dynamically according to the maximum and minimum limits provided, adding to maintain performance and removing to maintain cost.
+
+## Simple Storage Service
+1. S3:
+   1. Storage service for the internet.
+   2. Used to store and retrieve any amount of data at any time, from anywhere on the web.
+   3. It is an object-based storage.
+   4. When data is uploaded to the S3 bucket, it is replicated across multiple facilities.
+   5. Unlimited storage.
+   6. Stores data as objects within buckets.
+   7. Bucket name has to be unique.
+   8. A bucket is a logical unit of storage in AWS.
+   9. Object storage is a computer data storage architecture that manages data as objects.
+   10. Storage Types:
+       1. S3 standard: General-purpose storage of frequently accessed data. Fast access and object replication in multi-Availability Zones (AZ). Charged accordingly.
+       2. S3 IA- Infrequent Access: Long-lived, less frequently accessed data. Slow access, object replication in multi-AZ. Less expensive and auto-replication to protect against data loss.
+       3. S3 One Zone-IA: For data that is accessed less frequently but requires rapid access when needed. Slow access, no object replication.
+       4. S3 Intelligent Tiering: Automatically moves data to the most cost-effective tier.
+       5. S3 Glacier: Low-cost storage class for data archiving.
+       6. S3 Glacier Deep Archive: Lowest cost storage, retrieval time of 12 hours.
+      
+   11. Lifecycle Policies: When uploading object, you can decide what storage type, or you can also set a lifecycle policy that can move your object from one storage type to another based on its age.
+   12. S3 charges are based on storage, requests, tiers, data transfer, and region replication.
+
+## Relational Database (RDS)
+1. It is a distributed relational database service.
+2. High availability through Multi-AZ deployments.
+3. Easy to scale.
+4. Read replicas for performance.
