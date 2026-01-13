@@ -69,5 +69,11 @@
 
 
 ## Elastic File System (EFS)
-1. It is a shared file system hosted on cloud.
+1. It is a shared file system hosted on the cloud.
 2. Access Points -> Connect EFS to the file system.
+
+## Autoscaling Group
+1. A service that automatically monitors and adjusts compute resources to maintain performance for applications hosted in AWS.
+2. Alarm monitors CloudWatch metrics for Instances.
+3. A launch configuration/Template is an instance configuration template that an Auto Scaling group uses to launch EC2 instances.
+4. Scaling policy is used to add or remove instances dynamically according to the maximum and minimum limits provided, adding to maintain performance and removing to maintain cost.
