@@ -32,5 +32,42 @@ A container orchestration technology that manages and deploys thousands of conta
 
 # commands
 1. Example of creating a pod from an image: kubectl run podname --image=imagename
-2. The images are pulled from the Docker Hub, which has the latest images of various applications. Kubernetes can be configured to pull various images from the public or private repository according to the organizations rules.
+2. The images are pulled from the Docker Hub, which has the latest images of various applications. Kubernetes can be configured to pull various images from the public or private repository according to the organization's rules.
 3. Checking if the pod is running? -> kubectl get pods
+4. to describe the pods -> kubectl describe pod "pod-name".
+5. to delete all pods -> kubectl delete pods --all
+6. to delete a specific pod -> kubectl delete pod pod-name
+
+
+## YMAL files
+1. Important information to be put into every YMAL file: apiVersion, kind, metadata, and spec.
+2. The apiVersions are different for different kinds. Pod -> v1, Service -> v1, ReplicaSet -> apps/v1, Deployment -> apps/v1.
+3. metadata is generally a dictionary.
+4. To create the pod through a YAML file -> kubectl create -f YAML_file_name.yml
+5. If we use an image registry other than Docker Hub, then give the whole path directory.
+
+## Replica sets
+1. The replicas are created so that there is no downtime in case of error.
+2. Replicaset makes sure that at a point in time, there are as many replicas running as given in the YAML file.
+3. So, in case you delete a pod, another pod is spawned in its place.
+4. To identify the pods in one replicaset, the selector matchLabels type is used in the YAML file.
+5. To make changes to a replicaset, we have two options:
+   1. Either delete and recreate the ReplicaSet
+   2. Update the existing ReplicaSet and then delete all PODs, so new ones with the correct image will be created.
+6. To scale a replicaset, use the command -> kubectl scale replicaset replica-set-name --replicas=no-of-replicas-number.
+7. But, if you actually use the original YAML file is not updated. Only the replicas are updated. So, it's always a good move to correct the YAML file to scale.
+
+# commands
+1. To create a replicaset using a YAML file -> kubectl create -f yaml-filename.yaml
+2. To check the replicaset -> kubectl get replicaset
+3. Delete a replicaset -> kubectl delete replicaset replicaset-name
+4. to replace a replicaset -> kubectl replace -f replicaset-name
+5. Scaling the replicaset:
+   1. One way -> kubectl edit rs replicaset-name
+   2. Second way:
+     1. kubectl get rs yaml-filename -o yaml > yaml-filename.yaml
+     2. Edit the YAML file -> vi yaml-filename.yaml
+     3. apply YAML changes -> kubectl apply -f replicaset-name
+  
+## Deployments
+1. 
