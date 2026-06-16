@@ -70,4 +70,34 @@ A container orchestration technology that manages and deploys thousands of conta
      3. apply YAML changes -> kubectl apply -f replicaset-name
   
 ## Deployments
-1. 
+1. A Deployment is a Kubernetes object that manages ReplicaSets and Pods, ensuring the desired number of application instances are running.
+2. The hierarchy is: Deployment -> Replicasets -> Pods
+3. Why do we use Deployment:
+   1. Maintains the desired number of Pods.
+   2. Supports scaling up/down.
+   3. Enables rolling updates (e.g., update image versions without downtime).
+   4. Supports rollbacks to previous versions.
+   5. Self-healing through the underlying ReplicaSet.
+
+# commands
+1. Check deployment: kubectl get deployments
+2. to scale a deployment -> kubectl scale deployment nginx --replicas=5 (if to change without a YAML file)
+3. Create a deployment through a YAML file -> kubectl create -f yaml-filename.yaml
+4. Creating without a YAML file -> kubectl create deployment name --image=image_name --replicas=no_of_replicas
+
+## Services
+1. A Service in Kubernetes is an abstraction that provides a stable network endpoint for a group of Pods. Since Pods are ephemeral (last for a short time) and their IP addresses can change when they are recreated, a Service ensures that applications can reliably communicate with Pods without needing to know their individual IP addresses.
+2. A Service uses labels and selectors to identify and route traffic to the appropriate Pods.
+3. Services provide load balancing across multiple Pods.
+4. Services enable communication within and outside the cluster.
+5. Traffic sent to the Service is automatically distributed among the matching Pods with the random algorithm.
+6. Types of Kubernetes Services:
+   1. ClusterIP (Default): Exposes the Service on an internal cluster IP. Used for communication between applications inside the cluster, backend databases, and APIs. It is only accessible within the cluster and provides internal load balancing.
+   2. NodePort: Exposes the Service on a static port on every cluster node. Used for accessing applications from outside the cluster for testing or development. It is accessible externally and uses ports typically only in the range 30000–32767. It is suitable for labs and testing. If we do not assign a port, then from the range it is automatically assigned.
+   3. LoadBalancer: Exposes the Service externally using a cloud provider's load balancer. Used for production applications that require external access. It automatically provisions an external load balancer and provides a public IP address. They are common in AWS, Azure, and Google Cloud.
+   4. ExternalName: Maps a Service to an external DNS name. Used for accessing external services using Kubernetes DNS. There is no proxying. It returns a DNS CNAME record. It is useful for integrating external systems.
+7. Types of Service Ports:
+   1. port: exposed by the service
+   2. targetPort: port on Pod/Container
+   3. nodePort: External port used by NodePort Services
+   4. If targetPort is not specified, Kubernetes automatically sets it equal to the value of port.
