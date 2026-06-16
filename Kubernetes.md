@@ -1,4 +1,4 @@
-## Kubernetes
+# Kubernetes
 
 A container orchestration technology that manages and deploys thousands of containers in a cluster.
 
@@ -16,21 +16,21 @@ A container orchestration technology that manages and deploys thousands of conta
 12. We also have "container runtime" on the worker nodes: It is responsible for running the containers. This is important because we are running applications in the form of containers.
 13. Kubernetes was originally made to support the runtime of Docker containers specifically, but over time, it evolved to support other container runtimes. It no longer supports the runtime component of Docker, which is managed by containerd.
 
-## Kubectl
+# Kubectl
 1. It is the command-line utility of Kubernetes.
 2. It is the tool to operate the Kubernetes cluster. Eg: To view the status of the cluster, to provision applications, to scale up, down, delete, and so on.
-# commands
+## commands
 1. kubectl version
 2. kubectl --help
 3. kubectl get nodes -> for the name and number of the nodes, the status, roles, age (how long it has been up), version of Kubernetes running on the system,
 4. kubectl get nodes -o wide -> for all the ones above and extra -> internal-ip, external-ip, os-image, kernel-version, container-runtime.
 
-## PODS
+# PODS
 1. Kubernetes does not deploy containers directly on the worker nodes. The containers are encapsulated into a Kubernetes object known as pods.
 2. A pod is a single instance of an application. It is the smallest object that can be created in Kubernetes.
 3. When we want to scale up, we do not add more containers to the pods. We create more pods.
 
-# commands
+## commands
 1. Example of creating a pod from an image: kubectl run podname --image=imagename
 2. The images are pulled from the Docker Hub, which has the latest images of various applications. Kubernetes can be configured to pull various images from the public or private repository according to the organization's rules.
 3. Checking if the pod is running? -> kubectl get pods
@@ -38,15 +38,14 @@ A container orchestration technology that manages and deploys thousands of conta
 5. to delete all pods -> kubectl delete pods --all
 6. to delete a specific pod -> kubectl delete pod pod-name
 
-
-## YMAL files
+# YMAL files
 1. Important information to be put into every YMAL file: apiVersion, kind, metadata, and spec.
 2. The apiVersions are different for different kinds. Pod -> v1, Service -> v1, ReplicaSet -> apps/v1, Deployment -> apps/v1.
 3. metadata is generally a dictionary.
 4. To create the pod through a YAML file -> kubectl create -f YAML_file_name.yml
 5. If we use an image registry other than Docker Hub, then give the whole path directory.
 
-## Replica sets
+# Replica sets
 1. The replicas are created so that there is no downtime in case of error.
 2. Replicaset makes sure that at a point in time, there are as many replicas running as given in the YAML file.
 3. So, in case you delete a pod, another pod is spawned in its place.
@@ -57,7 +56,7 @@ A container orchestration technology that manages and deploys thousands of conta
 6. To scale a replicaset, use the command -> kubectl scale replicaset replica-set-name --replicas=no-of-replicas-number.
 7. But, if you actually use the original YAML file is not updated. Only the replicas are updated. So, it's always a good move to correct the YAML file to scale.
 
-# commands
+## commands
 1. To create a replicaset using a YAML file -> kubectl create -f yaml-filename.yaml
 2. To check the replicaset -> kubectl get replicaset
 3. Delete a replicaset -> kubectl delete replicaset replicaset-name
@@ -69,7 +68,7 @@ A container orchestration technology that manages and deploys thousands of conta
      2. Edit the YAML file -> vi yaml-filename.yaml
      3. apply YAML changes -> kubectl apply -f replicaset-name
   
-## Deployments
+# Deployments
 1. A Deployment is a Kubernetes object that manages ReplicaSets and Pods, ensuring the desired number of application instances are running.
 2. The hierarchy is: Deployment -> Replicasets -> Pods
 3. Why do we use Deployment:
@@ -79,13 +78,13 @@ A container orchestration technology that manages and deploys thousands of conta
    4. Supports rollbacks to previous versions.
    5. Self-healing through the underlying ReplicaSet.
 
-# commands
+## commands
 1. Check deployment: kubectl get deployments
 2. to scale a deployment -> kubectl scale deployment nginx --replicas=5 (if to change without a YAML file)
 3. Create a deployment through a YAML file -> kubectl create -f yaml-filename.yaml
 4. Creating without a YAML file -> kubectl create deployment name --image=image_name --replicas=no_of_replicas
 
-## Services
+# Services
 1. A Service in Kubernetes is an abstraction that provides a stable network endpoint for a group of Pods. Since Pods are ephemeral (last for a short time) and their IP addresses can change when they are recreated, a Service ensures that applications can reliably communicate with Pods without needing to know their individual IP addresses.
 2. A Service uses labels and selectors to identify and route traffic to the appropriate Pods.
 3. Services provide load balancing across multiple Pods.
