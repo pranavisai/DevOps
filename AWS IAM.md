@@ -13,3 +13,14 @@
    1. Provide descriptive names
    2. Similar roles in the same group
    3. Assign policies so that the users within a specific group will have similar permissions.
+
+## IAM Policies and Permissions
+1. Implement the Principle of Least Privilege
+2. IAM permissions provide fine-grained control over the actions performed on AWS resources.
+3. A collection of permissions are policies.
+
+## CloudTrail and User Access Audit
+1. Logs APi calls to AWS services, for example, stopping an EC2 instance
+2. Audit actions taken by users, services, and AWS resources
+3. Track and review API calls made by AWS IAM users, for example, accessing an S3 bucket.
+4. Detect successful and unsuccessful login attempts and detect security threats.
