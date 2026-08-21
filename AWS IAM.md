@@ -17,7 +17,7 @@
 ## IAM Policies and Permissions
 1. Implement the Principle of Least Privilege
 2. IAM permissions provide fine-grained control over the actions performed on AWS resources.
-3. A collection of permissions are policies.
+3. A collection of permissions is a policy.
 4. IAM policies have Effect, Actions, Resources, Conditions, and Principal (Entity that the policy applies to) 
 
 ## CloudTrail and User Access Audit
@@ -69,3 +69,47 @@
   
 ## AWS Private Link
 1. It allows users to securely access AWS services without exposing traffic to the internet.
+
+## AWS Organizations
+1. Advantages:
+   1. Centralized billing
+   2. Resource Sharing
+   3. Access Management
+   4. Compliance
+   5. Simplified account management
+
+## Centralized logging and monitoring
+1. CloudTrail: This AWS Service will capture API calls to AWS Services.
+2. CloudWatch: This AWS service will capture logs and metrics from applications and AWS services.
+3. AWS Config: This AWS service is used for auditing resource configuration against compliance rules.
+
+## AWS CloudTrail
+1. Logs the action and request so that the owner can analyze it later.
+2. It can help us create an audit trail of actions that happened in AWS.
+3. This gives visibility of who did what and when that happened.
+4. This also enhances security in the form of monitoring and analyzing the activity.
+5. These logs can be stored in Amazon S3 buckets.
+
+## AWS CloudWatch
+1. CloudWatch is used for monitoring and observability.
+2. It collects metrics, logs, and events from AWS services.
+3. Responds to issues by setting up alarms based on thresholds and conditions in the metrics.
+4. Analyze and visualize data in CloudWatch dashboards.
+5. Search and identify patterns to troubleshoot issues.
+
+## AWS Config
+1. Track and record configuration changes to AWS resources over time.
+2. Access and enforce compliance with desired configuration and industry standards.
+3. Used for change management. Keep records of changes over time and troubleshoot when needed.
+
+## IAM Anywhere
+Benefits to customers:
+   1. Centralized Access management
+   2. Improved security
+   3. Providing the possibility for external resources to access the AWS environment.
+   4. It is a flexible service
+
+## IAM Identity Center
+1. Centralized Access: Manage access and user permissions for all accounts in Amazon Organizations.
+2. User identities: You can create and manage user identities in AWS or connect to external identities.
+3. Single sign-on: Plug the applications into the identity center with single sign-on.
