@@ -40,3 +40,40 @@
 4. The type of CPU processor used has an impact on pricing.
 5. Ephemeral storage (temporary data storage that is tied to the life of a running process or container and is deleted when it stops or restarts) adds additional storage capacity and can be sized between 512 MB and 10 GB. The cost is region-specific.
 6. Provisioned concurrency (an AWS Lambda feature that pre-initializes a set number of execution environments so your serverless functions respond instantly with double-digit millisecond latency) avoids cold start delays. The cost is region-specific and depends on the type of processor selected.
+
+## Configuring Lambda
+1. Ways to configure Lambda:
+   1. AWS Management Console, AWS Command Line Interface (CLI), Software Development Kits (SDKs) (written according to the programming languages).
+   2. AWS CloudFormation gives Infrastructure as Code (IaC) options.
+   3. AWS Serverless Application Model that provides templates that you can use to configure Lambda.
+2. Lambda functions are short-lived; the Lambda max timeout is 900 seconds (15 minutes). The standard time is 3 seconds.
+
+## Creating a Lambda function using CLI 
+1. Creating a Lambda function:
+```
+aws lambda create-function --function-name my-function --runtime python3.9 --role arn:aws:iam::<your account ID>:role/lambda_execution_role --handler lambda-function.lambda_handler --zip-file fileb:///root/my-function.zip --region us-east-1
+```
+
+| Option                                     | Meaning                                          |
+| ------------------------------------------ | ------------------------------------------------ |
+| `aws lambda`                               | Work with the AWS Lambda service                 |
+| `create-function`                          | Create a new Lambda function                     |
+| `--function-name my-function`              | Name the Lambda function `my-function`           |
+| `--runtime python3.9`                      | The programming language/runtime is Python 3.9   |
+| `--role ...`                               | IAM role Lambda will use to access AWS resources |
+| `--handler lambda-function.lambda_handler` | Tells Lambda where the function's entry point is |
+| `--zip-file fileb:///root/my-function.zip` | Upload the Lambda code from this ZIP file        |
+| `--region us-east-1`                       | Create it in the `us-east-1` region              |
+
+2. Execute the Lambda function
+```
+aws lambda invoke --function-name my-function --payload '{"name":"KodeKloud"}' --cli-binary-format raw-in-base64-out output.txt
+```
+| Option                                  | Meaning                                       |
+| --------------------------------------- | --------------------------------------------- |
+| `aws lambda`                            | Work with AWS Lambda                          |
+| `invoke`                                | Execute the Lambda function                   |
+| `--function-name my-function`           | Invoke this Lambda function                   |
+| `--payload '{"name":"KodeKloud"}'`      | Send this JSON as input                       |
+| `--cli-binary-format raw-in-base64-out` | Tell AWS CLI to treat the payload as raw JSON |
+| `output.txt`                            | Save the Lambda response to this local file   |
