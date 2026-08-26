@@ -77,3 +77,25 @@ aws lambda invoke --function-name my-function --payload '{"name":"KodeKloud"}' -
 | `--payload '{"name":"KodeKloud"}'`      | Send this JSON as input                       |
 | `--cli-binary-format raw-in-base64-out` | Tell AWS CLI to treat the payload as raw JSON |
 | `output.txt`                            | Save the Lambda response to this local file   |
+
+## Canary Function
+Canaries are scripts that allow you to test the availability of endpoints, APIs, or websites.
+
+## Limitations
+1. A Lambda function can only run for 15 minutes maximum.
+2. Any function that runs should adhere to a ten GB RAM limit and a 10 GB storage limit.
+3. Lambda scales based on the load. Hence, it starts automatic concurrent executions as the amount of traffic increases. The limit for concurrent executions is 1000 at the same time. This is more of a soft limit. Sometimes a temporary burst of up to 3000 is possible in certain regions.
+4. A request for limit extension can be made, but it needs to be approved by AWS if required. This request can be made through the quota increase case in the Service Quotas dashboard.
+5. Ephemeral storage -> Temporary storage for the functions to read and write data.
+
+## Monitoring
+1. Lambda integrates with AWS CloudWatch and X-Ray Services to provide a variety of monitoring and troubleshooting features.
+2. CloudWatch monitors the number of invocations, requests, the duration of each request, and the number of requests that result in an error.
+3. Additional metrics can also be added through the CloudWatch dashboard. A few examples include:
+   1. Number of times Lambda was throttled due to reaching the concurrency limit.
+   2. Amount of delay when pulling data from stream sources
+   3. Number of times Lambda was unsuccessful in sending events to the dead-letter queue.
+   4. Detailed metrics about the concurrent executions
+4. Lambda Insights: It is an additional monitoring extension that can be enabled with CloudWatch to provide those types of additional monitoring features.
+5. AWS X-Ray is a monitoring and troubleshooting tool that provides a visual map and allows you to view requests as they travel through the application. This is great for identifying performance bottlenecks and errors. The complete path of the Lambda function can be traced from invocation to completion, and monitor its timing to isolate issues.
+6. TCP/IP and IP data packet information is usually available through flow logs in AWS. These are not available by default for Lambda. 
