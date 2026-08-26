@@ -96,6 +96,6 @@ Canaries are scripts that allow you to test the availability of endpoints, APIs,
    2. Amount of delay when pulling data from stream sources
    3. Number of times Lambda was unsuccessful in sending events to the dead-letter queue.
    4. Detailed metrics about the concurrent executions
-4. Lambda Insights: It is an additional monitoring extension that can be enabled with CloudWatch to provide those types of additional monitoring features.
+4. Lambda Insights: It is an additional monitoring extension inside CloudWatch that can be enabled with CloudWatch to provide those types of additional monitoring features.
 5. AWS X-Ray is a monitoring and troubleshooting tool that provides a visual map and allows you to view requests as they travel through the application. This is great for identifying performance bottlenecks and errors. The complete path of the Lambda function can be traced from invocation to completion, and monitor its timing to isolate issues.
 6. TCP/IP and IP data packet information is usually available through flow logs in AWS. These are not available by default for Lambda. 
