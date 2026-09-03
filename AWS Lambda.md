@@ -99,3 +99,26 @@ Canaries are scripts that allow you to test the availability of endpoints, APIs,
 4. Lambda Insights: It is an additional monitoring extension inside CloudWatch that can be enabled with CloudWatch to provide those types of additional monitoring features.
 5. AWS X-Ray is a monitoring and troubleshooting tool that provides a visual map and allows you to view requests as they travel through the application. This is great for identifying performance bottlenecks and errors. The complete path of the Lambda function can be traced from invocation to completion, and monitor its timing to isolate issues.
 6. TCP/IP and IP data packet information is usually available through flow logs in AWS. These are not available by default for Lambda. 
+
+## Networking
+1. When Lambda is created, it is placed in the service VPC of AWS. This is the default setup.
+2. This default service VPC already has access to the Internet.
+3. It also has access to all the other AWS services.
+4. Only the setup of security permissions is required.
+5. Two options for adding networking to Lambda:
+   1. Run Lambda inside our own private VPC next to the virtual servers and databases.
+   2. Leave Lambda in the service VPC and add a private connection between our VPC and Lambda using an interface endpoint.
+6. If Lambda runs inside our private VPC:
+   1. We are responsible for high availability.
+   2. Lambda should run in more than 1 availability zone.
+   3. For Lambda to communicate with the internet, we will have to add a NAT gateway to each of the availability zones.
+   4. Loss of connectivity to other AWS services that are not in our VPC.
+   5. Adding an endpoint to the VPC will add to the costs.
+   6. Affects the number of concurrent Lambda executions, as each time the Lambda is run, a new network interface called an ENI (Elastic Network Interface) is created.
+  
+## Concurrency
+| Type                        | What it does                                                                             | Main purpose                              |
+| --------------------------- | ---------------------------------------------------------------------------------------- | ----------------------------------------- |
+| **Unreserved concurrency**  | Lambda can use the account's available concurrency                                       | **Default / shared capacity**             |
+| **Reserved concurrency**    | Sets a **maximum** concurrency for a specific function and reserves that capacity for it | **Limit a function + guarantee capacity** |
+| **Provisioned concurrency** | Keeps a specified number of execution environments **pre-initialized and ready**         | **Reduce cold starts**                    |
